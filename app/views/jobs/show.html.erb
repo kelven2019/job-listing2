@@ -1,0 +1,7 @@
+<h1><%= @job.title%> </h1>
+<hr>
+  <%= simple_form_for @job do |f| %>
+    <div class="form-job">
+      <%= f.input :description, :label => "简介" %>
+    </div>
+  <% end %>
