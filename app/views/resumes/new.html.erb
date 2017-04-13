@@ -1,0 +1,7 @@
+<h1>投递简历</h1>
+<hr>
+<%= simple_form_for [@job, @resume] do |f| %>
+<%= f.input :content, label: "简介"%>
+<%= f.input :attachment %>
+<%= f.submit "提交"%>
+<% end %>
