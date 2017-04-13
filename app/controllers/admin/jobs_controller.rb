@@ -1,8 +1,9 @@
 class Admin::JobsController < ApplicationController
-  before_action :authenticate_user! , only: [:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_user! , only: [:new, :create, :edit, :update, :destroy, :publish, :hide]
   before_action :require_is_admin
+  layout "admin"
   def index
-    @jobs = Job.all
+    @jobs = Job.all.order("created_at DESC")
   end
 
 
@@ -22,6 +23,18 @@ class Admin::JobsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def publish
+    @job = Job.find(params[:id])
+    @job.publish!
+    redirect_to :back
+  end
+
+  def hide
+    @job = Job.find(params[:id])
+    @job.hide!
+    redirect_to :back
   end
 
   def update

@@ -1,11 +1,16 @@
 class JobsController < ApplicationController
   before_action :authenticate_user! , only: [:new, :create, :show]
   def index
-    @jobs = Job.all
+    @jobs = Job.where(:is_hidden => false).order("created_at DESC")
   end
 
   def show
     @job = Job.find(params[:id])
+    if @job.is_hidden
+      if !current_user.admin?
+        redirect_to root_path, alert: "你没有查看该职位的权限"
+      end
+    end
   end
 
 
