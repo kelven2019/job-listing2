@@ -14,9 +14,7 @@ class JobsController < ApplicationController
   def show
     @job = Job.find(params[:id])
     if @job.is_hidden
-      if !current_user.admin?
         redirect_to root_path, alert: "你没有查看该职位的权限"
-      end
     end
   end
 
