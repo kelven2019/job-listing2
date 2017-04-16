@@ -1,13 +1,14 @@
 class JobsController < ApplicationController
   before_action :authenticate_user! , only: [:new, :create, :show]
+  before_action :validate_search_key, only: [:search]
   def index
     @jobs = case params[:order]
       when 'by_upper_bound'
-        Job.where(is_hidden: false).order('wage_upper_bound DESC')
+        Job.publish.order('wage_upper_bound DESC')
       when 'by_lower_bound'
-        Job.where(is_hidden: false).order('wage_lower_bound DESC')
+        Job.publish.order('wage_lower_bound DESC')
       else
-        Job.where(is_hidden: false).order('created_at DESC')
+        Job.publish.recent
       end
   end
 
@@ -18,10 +19,30 @@ class JobsController < ApplicationController
     end
   end
 
+  def search
+    if @query_string.present?
+      search_result = Job.publish.ransack(@search_criteria).result(:distinct => true)
+      @jobs = search_result.paginate(:page => params[:page], :per_page => 20 )
+      puts @jobs
+    else
+      @jobs = Job.publish.recent.paginate(:page => params[:page], :per_page => 15)
+      puts @jobs
+    end
+  end
+
 
   private
 
   def job_params
     params.require(:job).permit(:title, :description, :wage_upper_bound, :wage_lower_bound, :contact_email, :is_hidden)
+  end
+
+  def validate_search_key
+    @query_string = params[:q].gsub(/\\|\'|\/|\?/, "") if params[:q].present?
+    @search_criteria = search_criteria(@query_string)
+  end
+
+  def search_criteria(query_string)
+    { :title_or_description_or_contact_email_cont => query_string }
   end
 end
