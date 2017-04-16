@@ -30,14 +30,102 @@ $banner: url(http://oggx6lf7f.bkt.clouddn.com/fw4i5.jpg);
  @import "bootstrap";
  @import "font-awesome-sprockets";
  @import "font-awesome";
+ // body
+ body {
+    margin-buttom: 150px;
+    padding-top: 65px;
+  }
 
 
+ // navbar
+ .navbar {
+   border: none;
+ }
+ .navbar-default {
+   width: 100%;
+   position: fixed;
+   z-index: 10;
+   top: 0;
+   left: 0;
+   margin-bottom: 0;//底部 margin 不撑开距离
+   transition: background-color .6s;
+   &.black {
+     color: $nav-color-gray;
+     background-color: $nav-background-black;
+     // border-bottom: 1px solid #f2f2f5;
+     .navbar-nav > li > a{
+       color: $nav-color-gray;
+       // border: 1px solid #ddd;
+     }
+     .navbar-brand {
+       color: $nav-color-white;
+     }
+   }
+   &.transparent {
+     color: $nav-color-white;
+     background: linear-gradient(#333,transparent);//背景颜色
+     border-bottom: 0;
+   }
+   .navbar-brand {
+     padding: 10px 15px;//上下10px,左右15px
+     line-height: 30px;//文字行高
+     color: $nav-color-white;
+     &:hover {
+       color: $nav-color-white;
+     }
+   }
+   .navbar-right {
+     // margin-top: 10px;
+   }
+   .navbar-nav > li > a{
+     // width: 80px;
+     // border-radius: 40px;
+     // padding-top: 6px;
+     // padding-bottom: 6px;
+     // text-align: center;
+     // margin-right: 15px;
+     color: $nav-color-white;
+     // border: 1px solid rgb(221, 221, 221);
+     transition: 0.15s linear;
+   }
+   .navbar-nav > li > a:hover,
+   .navbar-nav > li > a:focus {
+     color: $nav-color-white;
+     background-color: none;
+     border-color: $nav-a-hover;
+   }
+   .navbar-nav > .active > a,
+   .navbar-nav > .active > a:hover,
+   .navbar-nav > .active > a:focus {
+     color: $nav-a-hover;
+     background-color: $nav-a-hover;
+   }
+   .navbar-nav > .open > a,
+   .navbar-nav > .open > a:focus,
+   .navbar-nav > .open > a:hover {
+       background: none;
+       color: #fff;
+   }
+ }
+ @media (min-width: 768px) {
+   .navbar {
+     border-radius: 0;//圆角为0
+   }
+ }
+
+ .navbar-brand > img {
+   display: inline-block;  //图片和链接文字显示在同一行
+   margin-right: 10px; //图片和链接文字拉开一点距离
+   width: 32px; //定制图片宽度
+   height: 32px; //定制图片高度
+ }
 
 
 // footer
 .footer-nav {
   background: #201f21;
   padding: 35px 0 20px 0;
+  margin: 0px;
   .columns {
     max-width: 980px;
     margin: 0 auto;
@@ -121,6 +209,7 @@ $banner: url(http://oggx6lf7f.bkt.clouddn.com/fw4i5.jpg);
   text-align: center;
   font-size: 18px;
   color: #666;
+  margin: 0;
   span {
     display: inline-block;
     margin-right: 10px;
