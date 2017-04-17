@@ -1,0 +1,36 @@
+<div class="login-wrap">
+  <div class="moving-bg">
+    <div class="image-content">
+      <img src="http://oggx6lf7f.bkt.clouddn.com/5hpp3.jpg" class="change">
+    </div>
+  </div>
+
+  <div class="registration-wrap">
+    <div class="registration-block">
+      <div class="content clearfix">
+        <div class="right-part fr">
+          <div class="devise">
+            <h2><img src="http://oggx6lf7f.bkt.clouddn.com/u2k8f.png">注册</h2>
+
+            <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+              <%= f.error_notification %>
+
+              <div class="form-inputs">
+                <%= f.input :email, label: "电子邮箱", required: true, autofocus: true, presence: "请输入电子邮箱地址", placeholder: "请输入电子邮箱地址" %>
+                <%= f.input :password, label: "密码", required: true, placeholder: "密码，6-16位数字或字母", hint: ("最小6位密码" if @minimum_password_length) %>
+                <%= f.input :password_confirmation, label: "再次确认密码", required: true, placeholder: "再次输入密码" %>
+              </div>
+
+              <div class="form-actions">
+                <%= f.button :submit, "注册", class: "registration-btn" %>
+              </div>
+            <% end %>
+            <div class="tip">
+              <%= render "devise/shared/links" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

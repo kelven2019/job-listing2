@@ -1,0 +1,34 @@
+<h2>Log in</h2>
+<div class="moving-bg">
+  <img src="http://oggx6lf7f.bkt.clouddn.com/5hpp3.jpg" class="change">
+</div>
+<div class="registration-wrap">
+  <div class="registration-block">
+    <div class="content clearfix">
+      <div class="right-part fr">
+        <div class="devise">
+          <h2><img src="http://oggx6lf7f.bkt.clouddn.com/u2k8f.png">登录</h2>
+
+
+            <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+              <div class="form-inputs">
+                <%= f.input :email, label: "电子邮箱", required: false, autofocus: true, placeholder: "电子邮箱", error: "电子邮箱格式错误，请输入正确的电子邮箱子弟" %>
+                <%= f.input :password, label: "密码", required: false, hint: "6-16位密码",placeholder: "密码" %>
+                <%= f.input :remember_me, inline_label: "记住我", as: :boolean if devise_mapping.rememberable? %>
+                <div class="forget-password">
+                  <%= link_to "忘记密码?", "#" %><br/>
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <%= f.button :submit, "登陆", class: "registration-btn" %>
+              </div>
+            <% end %>
+            <div class="tip">
+              <%= render "devise/shared/links" %>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
