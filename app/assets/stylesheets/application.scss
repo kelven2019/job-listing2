@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require devise
  */
 
 $nav-color-gray: #A6A6A6;
@@ -23,7 +24,7 @@ $banner-color: #fff;
 $btn-color: #fff;
 $btn-background: #49BCB5;
 $btn-background-hover: #00DBE9;
-$banner: url(http://oggx6lf7f.bkt.clouddn.com/fw4i5.jpg);
+$banner: url(https://static.pexels.com/photos/7114/laptop-mobile.jpg);
 
 
  @import "bootstrap-sprockets";
@@ -31,101 +32,420 @@ $banner: url(http://oggx6lf7f.bkt.clouddn.com/fw4i5.jpg);
  @import "font-awesome-sprockets";
  @import "font-awesome";
  // body
- body {
-    margin-buttom: 150px;
-    padding-top: 65px;
+body {
+  font-family: Hiragino Sans GB,Lantinghei SC,Open Sans,Arial,Microsoft YaHei,sans-serif;
+
+  // letter-spacing: 0.1em;
+}
+
+.body1 {
+  margin-top: 80px;
+}
+
+
+
+.table {
+  border: 1px solid #e0e6ed;
+  thead > tr > th {
+    background: #eff2f7;
+    border-bottom: 1px solid #e0e6ed;
   }
+  &.table-striped > tbody > tr:nth-of-type(even) {
+    background-color: #f9f9f9;
+  }
+  &.table-striped > tbody > tr:nth-of-type(odd) {
+    background-color: #fff;
+  }
+  td, th {
+    // border-right: 1px solid #ddd;
+  }
+  .btn {
+    &.btn-info {
+      background: #F0AD4E;
+      border-color: #F0AD4E;
+    }
+    &.btn-warning {
+      background: #62A8EA;
+      border-color: #62A8EA;
+    }
+    &.btn-danger {
+      background: #F96868;
+      border-color: #F96868;
+    }
+  }
+}
 
+.custab{
+  border: 1px solid #ccc;
+  padding: 5px;
+  margin: 5% 0;
+  box-shadow: 3px 3px 2px #ccc;
+  transition: 0.5s;
+}
 
- // navbar
- .navbar {
-   border: none;
- }
- .navbar-default {
-   width: 100%;
-   position: fixed;
-   z-index: 10;
-   top: 0;
-   left: 0;
-   margin-bottom: 0;//底部 margin 不撑开距离
-   transition: background-color .6s;
-   &.black {
-     color: $nav-color-gray;
-     background-color: $nav-background-black;
-     // border-bottom: 1px solid #f2f2f5;
-     .navbar-nav > li > a{
-       color: $nav-color-gray;
-       // border: 1px solid #ddd;
-     }
-     .navbar-brand {
-       color: $nav-color-white;
-     }
-   }
-   &.transparent {
-     color: $nav-color-white;
-     background: linear-gradient(#333,transparent);//背景颜色
-     border-bottom: 0;
-   }
-   .navbar-brand {
-     padding: 10px 15px;//上下10px,左右15px
-     line-height: 30px;//文字行高
-     color: $nav-color-white;
-     &:hover {
-       color: $nav-color-white;
-     }
-   }
-   .navbar-right {
-     // margin-top: 10px;
-   }
-   .navbar-nav > li > a{
-     // width: 80px;
-     // border-radius: 40px;
-     // padding-top: 6px;
-     // padding-bottom: 6px;
-     // text-align: center;
-     // margin-right: 15px;
-     color: $nav-color-white;
-     // border: 1px solid rgb(221, 221, 221);
-     transition: 0.15s linear;
-   }
-   .navbar-nav > li > a:hover,
-   .navbar-nav > li > a:focus {
-     color: $nav-color-white;
-     background-color: none;
-     border-color: $nav-a-hover;
-   }
-   .navbar-nav > .active > a,
-   .navbar-nav > .active > a:hover,
-   .navbar-nav > .active > a:focus {
-     color: $nav-a-hover;
-     background-color: $nav-a-hover;
-   }
-   .navbar-nav > .open > a,
-   .navbar-nav > .open > a:focus,
-   .navbar-nav > .open > a:hover {
-       background: none;
-       color: #fff;
-   }
- }
- @media (min-width: 768px) {
-   .navbar {
-     border-radius: 0;//圆角为0
-   }
- }
+.custab:hover{
+  box-shadow: 3px 3px 0px transparent;
+  transition: 0.5s;
+}
 
- .navbar-brand > img {
-   display: inline-block;  //图片和链接文字显示在同一行
-   margin-right: 10px; //图片和链接文字拉开一点距离
-   width: 32px; //定制图片宽度
-   height: 32px; //定制图片高度
- }
+// section-title
+section {
+  padding-top: 20px;
+  padding-bottom: 85px;
+  &.odd {
+    background: #F2F2F5;
+  }
+}
+.section-title {
+  text-align: center;
+  font-size: 34px;
+  color: #858c8b;
+  line-height: 34px;
+}
 
+// navbar
+.navbar {
+  border: none;
+}
+.navbar-default {
+  width: 100%;
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  margin-bottom: 0;//底部 margin 不撑开距离
+  transition: background-color .6s;
+  &.black {
+    color: $nav-color-gray;
+    background-color: $nav-background-black;
+    // border-bottom: 1px solid #f2f2f5;
+    .navbar-nav > li > a{
+      color: $nav-color-gray;
+      // border: 1px solid #ddd;
+    }
+    .navbar-brand {
+      color: $nav-color-white;
+    }
+  }
+  &.transparent {
+    color: $nav-color-white;
+    background: linear-gradient(#333,transparent);//背景颜色
+    border-bottom: 0;
+  }
+  .navbar-brand {
+    padding: 10px 15px;//上下10px,左右15px
+    line-height: 30px;//文字行高
+    color: $nav-color-white;
+    &:hover {
+      color: $nav-color-white;
+    }
+  }
+  .navbar-right {
+    // margin-top: 10px;
+  }
+  .navbar-nav > li > a{
+    // width: 80px;
+    // border-radius: 40px;
+    // padding-top: 6px;
+    // padding-bottom: 6px;
+    // text-align: center;
+    // margin-right: 15px;
+    color: $nav-color-white;
+    // border: 1px solid rgb(221, 221, 221);
+    transition: 0.15s linear;
+  }
+  .navbar-nav > li > a:hover,
+  .navbar-nav > li > a:focus {
+    color: $nav-color-white;
+    background-color: none;
+    border-color: $nav-a-hover;
+  }
+  .navbar-nav > .active > a,
+  .navbar-nav > .active > a:hover,
+  .navbar-nav > .active > a:focus {
+    color: $nav-a-hover;
+    background-color: $nav-a-hover;
+  }
+  .navbar-nav > .open > a,
+  .navbar-nav > .open > a:focus,
+  .navbar-nav > .open > a:hover {
+      background: none;
+      color: #fff;
+  }
+}
+@media (min-width: 768px) {
+  .navbar {
+    border-radius: 0;//圆角为0
+  }
+}
+
+.navbar-brand > img {
+  display: inline-block;  //图片和链接文字显示在同一行
+  margin-right: 10px; //图片和链接文字拉开一点距离
+  width: 32px; //定制图片宽度
+  height: 32px; //定制图片高度
+}
+
+// banner
+
+.container-fluid {
+  .jumbotron {
+    padding-bottom: 110px;//内部的底部边距，这样按钮不会很靠近底部了
+    margin: 0 -15px 0px;//顶部margin为0，因此可以直接接着导航栏；左右margin为负15，因此可以顶到浏览器的边缘（抵消 container-fluid 的 15px 左右padding);底部margin为20，会跟下面的内容撑开距离
+    border-radius: 0;//圆角为0
+    padding-top: 0;
+  }
+}
+.jumbotron {
+  background-image: $banner;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-bottom: 110px;
+  background-position: center -38px;
+  margin: 0 -15px 0;//顶部margin为0，因此可以直接接着导航栏；左右margin为负15，因此可以顶到浏览器的边缘（抵消 container-fluid 的 15px 左右padding);底部margin为20，会跟下面的内容撑开距离
+  color: $banner-color;
+  position: relative;
+  height: 770px;
+  letter-spacing: 2px;
+  // filter: blur(.5px);
+  &::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: transparentize(#000, .55);
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .text-content {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .title {
+    text-align: center;//文字左对齐
+    padding: 50px 20px 0;//上50px，左右20px，下0
+    font-size: 50px;
+    font-family: "Helvetica Neue", "Microsoft Yahei", 微软雅黑;
+    text-align: center;
+    padding-top: 268px;
+  }
+  .slogan {
+    width: 600px;
+    margin: 44px auto 0;
+    font-size: 22px;
+    line-height: 26px;
+    text-align: center;
+  }
+  .lead {
+    margin-top: 40px;
+    margin-bottom: 230px;
+    text-align: center;
+    color: white;
+    .b-btn {
+      padding: 10px 20px;
+    }
+  }
+}
+
+// hot-jobs-category
+.hjc-ul {
+  padding: 0 20px 0;
+  margin: 50px auto 0;
+  text-align: center;
+  overflow: hidden;
+  height: 355px;
+  width: 1024px;
+  li {
+    display: inline-block;
+    width: 220px;
+    height: 150px;
+    margin-left: 10px;
+    margin-right: 10px;
+    position: relative;
+    margin-bottom: 50px;
+    overflow: hidden;
+    .hjc-img-wrap {
+      width: 220px;
+      height: 150px;
+      img {
+        width: 100%;
+        height: auto;
+      }
+      &:hover {
+        transform: scale(1.2);
+        -webkit-transform: scale(1.2);
+        -webkit-transition: all .8s;
+        transition: all .8s;
+      }
+    }
+    .title {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0,0,0,.7);
+      font-size: 16px;
+      padding: 6px 25px;
+      color: #fff;
+      transition: opacity .4s ease-in-out;
+    }
+  }
+  .more {
+    .title {
+      height: 150px;
+      line-height: 130px;
+      font-size: 20px;
+    }
+  }
+}
+
+// home-people
+.home-people {
+  .person {
+    display: inline-block;
+    margin-top: 20px;
+    top: 0;
+    position: relative;
+    -webkit-transition: all .4s;
+    transition: all .4s;
+    &:hover {
+      position: relative;
+      top: -5px;
+    }
+    .avata-wrapper {
+      position: absolute;
+      width: 96px;
+      height: 96px;
+      padding: 5px;
+      left: 50%;
+      top: 10px;
+      margin-left: -53px;
+      border: dotted 1px #E6EDEF;
+      border-radius: 53px;
+      overflow: hidden;
+    }
+    .avata {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+    }
+    .intro {
+      margin-top: 108px;
+      .name {
+        text-align: center;
+      }
+      .invest {
+        float: right;
+        margin-right: 20px;
+        font-size: 14px;
+        line-height: 28px;
+        color: #fff;
+        font-weight: bold;
+      }
+    }
+    .words {
+      position: relative;
+      margin-top: 10px;
+      padding: 41px 20px 20px 25px;
+      border-radius: 3px;
+      color: #fff;
+      line-height: 25px;
+      text-align: left;
+      font-weight: bold;
+      overflow: hidden;
+      .bg {
+        position: absolute;
+        display: block;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        opacity: 0.7;
+        z-index: 0;
+      }
+      .quote {
+        position: absolute;
+        color: #aaa;
+        font-size: 16px;
+      }
+      .quote-l {
+        top: 10px;
+        left: 5px;
+      }
+      .quote-r {
+        bottom: 10px;
+        right: 5px;
+      }
+      .content {
+        position: relative;
+        height: 75px;
+        overflow: hidden;
+        font-size: 13px;
+        z-index: 0;
+        color: #333;
+      }
+    }
+  }
+}
+
+.section-content {
+  width: 1000px;
+  padding-top: 60px;
+  margin: 0 auto;
+  text-align: center;
+  line-height: 1.8em;
+  .title {
+    padding: 20px 0 10px;
+    color: #333333;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  .description {
+    width: 420px;
+    margin: 0 auto;
+    line-height: 26px;
+    margin-bottom: 20px;
+  }
+  .col-3 {
+    padding-top: 20px;
+    .item {
+      width: 300px;
+      margin-left: 33px;
+      position: relative;
+      top: 0;
+      -webkit-transition: all .4s;
+      transition: all .4s;
+      &:hover {
+        position: relative;
+        top: -5px;
+      }
+      .advantage-img {
+        width: 60px;
+        height: 60px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+      .advantage-title {
+        margin-top: 20px;
+        margin-bottom: 10px;
+        color: #333333;
+        font-weight: bold;
+        line-height: 24px;
+        font-size: 16px;
+      }
+    }
+  }
+}
 
 // footer
 .footer-nav {
   background: #201f21;
   padding: 35px 0 20px 0;
-  margin: 0px;
   .columns {
     max-width: 980px;
     margin: 0 auto;
@@ -214,5 +534,166 @@ $banner: url(http://oggx6lf7f.bkt.clouddn.com/fw4i5.jpg);
     margin-right: 10px;
     height: 24px;
     line-height: 23px;
+  }
+}
+
+.wrapper-container {
+  min-height: 653px;
+  // padding-top: 120px;
+  padding-top: 75px;
+  padding-bottom: 80px;
+  .container {
+    padding-top: 40px;
+  }
+  .login-wrap {
+    height: 695px;
+  }
+}
+
+.sidebar {
+  display: none;
+  position: fixed;
+  z-index: 998;
+  right: 30px;
+  bottom: 30px;
+  width: 40px;
+  height: auto;
+  line-height: 20px;
+  * {
+    box-sizing: border-box;
+  }
+  ul {
+    padding: 0;
+  }
+  li {
+    position: relative;
+    display: block;
+    height: 40px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 8px;
+    background: #fbfbfb;
+    line-height: 42px;
+    &:hover {
+      background: #eee;
+    }
+    &:first-child {
+      margin-top: 0;
+    }
+    &.backtop i {
+      font-size: 18px;
+    }
+    &.support {
+      i {
+        font-size: 20px;
+      }
+      .ewm {
+        line-height: 22px;
+        display: none;
+        left: 0px;
+        opacity: 0;
+        position: absolute;
+        z-index: 1;
+        opacity: 0;
+        display: none;
+        left: 0;
+        top: 50%;
+        margin-top: -68px;
+        width: 136px;
+        height: 136px;
+        padding-right: 20px;
+        p {
+          background: #eee;
+          border-radius: 3px;
+          padding: 12px;
+        }
+      }
+    }
+    i {
+      color: #555;
+    }
+  }
+}
+
+// button
+.b-btn {
+  width: 220px;
+  color: $btn-color;//字体颜色
+  background-color: $btn-background;//背景颜色
+  border-color: $btn-background;//边框颜色
+}
+
+.b-btn:focus,
+.b-btn:hover {
+  color: #fff;
+  background-color: $btn-background-hover;//鼠标放置在btn上的背景颜色
+  border-color: $btn-background-hover;//鼠标放置在btn上的边框颜色
+}
+
+.btn-lg, .btn-group-lg > .btn {
+  padding: 8px 16px;//通过padding来决定btn的大小
+  font-size: 16px;//btn文字大小
+  border-radius: 3px;//btn圆角
+}
+
+.search-wrap, .content {
+  margin-top: -20px;
+}
+
+.btn-success {
+  background: $btn-background;
+  color: #fff;
+  &:hover, &:active {
+    background: $btn-background-hover !important;
+    border-color: $btn-background-hover !important;
+  }
+}
+
+// label
+.label {
+  font-size: 12px;
+}
+.label-success {
+  background: $btn-background;
+}
+.label-default {
+  background: #999999;
+}
+
+// admin
+.admin-panel {
+  position: relative;
+  margin-left: 100px;
+  width: 1040px;
+  min-height: 500px;
+  .group {
+    padding-bottom: 10px;
+  }
+}
+
+.form-box {
+  padding-bottom: 40px;
+}
+
+.radio.inline {
+  display: inline;
+  margin-right: 20px;
+}
+
+.empty-message {
+  text-align: center;
+  line-height: 400px;
+}
+
+.jobs-container {
+  padding-top: 40px;
+}
+
+.job_wage_lower_bound {
+  input {
+    width: 50px;
+    text-align: center;
   }
 }

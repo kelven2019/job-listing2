@@ -12,10 +12,18 @@
 
   <body>
     <div class="container-fluid">
-      <%= render "common/navbar" %>
-      <%= render "common/flashes" %>
-      <%= yield %>
+      <div class="row">
+        <%= render "common/navbar" %>
+        <div>
+          <% if current_page?('/') %>
+            <div>
+          <% else %>
+            <div class="container-fluid wrapper-container container">
+            <%= render "common/flashes" %>
+          <% end %>
 
+            <%= yield %>
+      </div>
     </div>
       <%= render "common/footer" %>
   </body>

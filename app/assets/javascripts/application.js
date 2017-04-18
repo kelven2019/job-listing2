@@ -15,4 +15,21 @@
 //= require turbolinks
 //= require bootstrap/alert
 //= require bootstrap/dropdown
+//= require bootstrap/collapse
 //= require_tree .
+
+// navbar
+$(window).scroll(function () {
+	var $navbar = $('#navbar')
+	if ($(this).scrollTop() > 100) {
+		$navbar.addClass('black').removeClass('transparent')
+	} else {
+		$navbar.removeClass('black').addClass('transparent')
+	}
+
+	if ($(this).scrollTop() > 500) {
+		$('#sidebar').fadeIn()
+	} else {
+		$('#sidebar').fadeOut()
+	}
+})
