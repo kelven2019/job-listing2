@@ -32,7 +32,7 @@
           <tr>
             <td><%= link_to(job.title, job_path(job)) %></td>
             <td><%= link_to(job.category_name, '/jobs/search?utf8=✓&q=' + job.category_name) %></td>
-            <td><span class="label label-default"><%= job.wage_lower_bound %> - <%= job.wage_upper_bound %></span></td>
+            <td><span class="label label-default"><%= job.wage_lower_bound %> ~ <%= job.wage_upper_bound %></span></td>
             <td><%= link_to(job.company_name, '/jobs/search?utf8=✓&q=' + job.company_name) %></td>
             <td><span class="fa fa-map-marker"></span> <%= job.location %></td>
             <td><%= job.created_at %></td>

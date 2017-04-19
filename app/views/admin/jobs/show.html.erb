@@ -5,7 +5,7 @@
     <%= f.input :category_name, :label => "职位类型", :collection => ["IT工程师", "产品经理", "设计师", "广告创意", "市场与销售", "生成制造", "金融", "其他"], as: :radio_buttons, :checked => @job.category_name %>
     <%= f.input :description, :label => "简介", input_html: { class: "form-control"} %>
     <%= f.input :wage_lower_bound, :label => '薪水' do %>
-         <%= f.input_field :wage_lower_bound, :as => :string, placeholder: '下限' %>
+         <%= f.input_field :wage_lower_bound, :as => :string, placeholder: '下限' %> ~
          <%= f.input_field :wage_upper_bound, :as => :string, placeholder: '上限' %>
     <% end %>
     <%= f.input :contact_email, label: "联系邮箱", input_html: { class: "form-control"} %>
@@ -15,7 +15,7 @@
 
     <%= f.input :company_url, :label => "公司网站", input_html: { class: "form-control"}, placeholder: "公司的官方网站" %>
 
-  
+
   </div>
 
 

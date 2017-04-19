@@ -34,7 +34,7 @@ class JobsController < ApplicationController
   private
 
   def job_params
-    params.require(:job).permit(:title, :description, :wage_upper_bound, :wage_lower_bound, :contact_email, :is_hidden)
+    params.require(:job).permit(:title, :description, :wage_upper_bound, :wage_lower_bound, :contact_email, :is_hidden, :category_name, :location, :company_name, :company_url)
   end
 
   def validate_search_key
@@ -43,6 +43,6 @@ class JobsController < ApplicationController
   end
 
   def search_criteria(query_string)
-    { :title_or_category_name__company_name_cont => query_string }
+    { :title_or_category_name_company_name_cont => query_string }
   end
 end
