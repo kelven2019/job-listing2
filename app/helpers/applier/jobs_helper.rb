@@ -1,0 +1,2 @@
+module Applier::JobsHelper
+end

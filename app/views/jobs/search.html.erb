@@ -1,6 +1,6 @@
 <div>
   <br>
-<% if @query_string.blank? %>
+  <% if @query_string.blank? %>
     <div class="search-info-title">
       搜索关键词不能为空
     </div>
@@ -14,7 +14,13 @@
     <thead>
       <tr>
         <th>职位</th>
+        <th>工作种类</th>
         <th>简介</th>
+        <th>工资</th>
+        <th>公司名称</th>
+        <th>公司地点</th>
+        <th>发布时间</th>
+
 
         <% if !current_user || !current_user.is_admin? %>
         <th>申请职位</th>
@@ -24,9 +30,16 @@
       <tbody>
         <% @jobs.each do |job| %>
           <tr>
-            <td><%= link_to(render_highlight_content(job,@query_string), job_path(job)) %></td>
+            <td><%= link_to(job.title, job_path(job)) %></td>
+            <td><%= link_to(job.category_name, '/jobs/search?utf8=✓&q=' + job.category_name) %></td>
             <td><%= job.description %> </td>
-            <td><%= link_to("申请职位", new_job_resume_path(job), class: "btn btn-primary btn-sm")%></td>
+            <td><span class="label label-default"><%= job.wage_lower_bound %> - <%= job.wage_upper_bound %></span></td>
+            <td><%= link_to(job.company_name, '/jobs/search?utf8=✓&q=' + job.company_name) %></td>
+            <td><span class="fa fa-map-marker"></span> <%= job.location %></td>
+            <td><%= job.created_at %></td>
+            <% if !current_user || !current_user.is_admin? %>
+              <td><%= link_to("申请职位", new_job_resume_path(job), class: "btn btn-primary btn-sm")%></td>
+            <% end %>
           </tr>
         <% end %>
       </tbody>

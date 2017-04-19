@@ -1,0 +1,24 @@
+<div class="group">
+  <%= link_to("添加分类", new_admin_category_path, class: "btn btn-default pull-right") %>
+</div>
+
+<table class="table table-hover table-boldered table-striped custab">
+  <thead>
+    <tr>
+      <th>分类名称</th>
+      <th width="15%">操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @categories.each do |category| %>
+      <tr>
+        <td><%= category.name %></td>
+        <td>
+          <%= link_to edit_admin_category_path(category), class: "btn btn-xs btn-info" do %>编辑<% end %>
+          |
+          <%= link_to admin_category_path(category), :method => :delete, :class => "btn btn-xs  btn-danger", :data => { :confirm => "Are you sure?" } do %>删除<% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

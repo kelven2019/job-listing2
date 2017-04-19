@@ -7,7 +7,9 @@ Rails.application.routes.draw do
     end
     resources :resumes
   end
-
+  namespace :applier do
+    resources :jobs
+  end
   namespace :admin do
     resources :jobs do
       member do
@@ -16,6 +18,7 @@ Rails.application.routes.draw do
       end
       resources :resumes
     end
+    resources :categories
   end
   root 'welcome#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

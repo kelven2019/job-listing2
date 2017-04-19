@@ -24,7 +24,7 @@ $banner-color: #fff;
 $btn-color: #fff;
 $btn-background: #49BCB5;
 $btn-background-hover: #00DBE9;
-$banner: url(https://static.pexels.com/photos/7114/laptop-mobile.jpg);
+$banner: url(https://static.pexels.com/photos/6471/woman-hand-smartphone-desk.jpg);
 
 
  @import "bootstrap-sprockets";
@@ -35,11 +35,13 @@ $banner: url(https://static.pexels.com/photos/7114/laptop-mobile.jpg);
 body {
   font-family: Hiragino Sans GB,Lantinghei SC,Open Sans,Arial,Microsoft YaHei,sans-serif;
 
+
   // letter-spacing: 0.1em;
 }
 
 .body1 {
   margin-top: 80px;
+  margin-bottom: 0;
 }
 
 
@@ -112,7 +114,7 @@ section {
   position: fixed;
   z-index: 10;
   top: 0;
-  left: 0;
+  left: 10px;
   margin-bottom: 0;//底部 margin 不撑开距离
   transition: background-color .6s;
   &.black {
@@ -122,6 +124,11 @@ section {
     .navbar-nav > li > a{
       color: $nav-color-gray;
       // border: 1px solid #ddd;
+    }
+    .navbar-nav > li > i{
+      display: inline-block; //图片和链接文字显示在同一行
+      width: 32px; //定制图片宽度
+      height: 32px; //定制图片高度
     }
     .navbar-brand {
       color: $nav-color-white;
@@ -469,11 +476,12 @@ section {
         margin-right: 50px;
       }
       h3 {
-        color: #fff;
+        color: #ffffff;
         opacity: .5;
         margin-top: 0;
         font-size: 24px;
       }
+
       h4 {
         .fa {
           font-size: 18px;
@@ -524,6 +532,7 @@ section {
 }
 
 .footer {
+  
   background: #1a191a;
   padding: 16px 10px 6px;
   text-align: center;
@@ -636,6 +645,7 @@ section {
   padding: 8px 16px;//通过padding来决定btn的大小
   font-size: 16px;//btn文字大小
   border-radius: 3px;//btn圆角
+  margin-bottom: 10px;
 }
 
 .search-wrap, .content {
@@ -697,3 +707,18 @@ section {
     text-align: center;
   }
 }
+.btn-danger {
+     color: #fff;//字体颜色
+
+     background-color: #EF6C00;//背景颜色
+
+     border-color: #EF6C00;//边框颜色
+
+ }
+
+ .btn-danger:hover {
+     background-color: #E65100;//鼠标放置在btn上的背景颜色
+
+     border-color: #E65100;//鼠标放置在btn上的边框颜色
+
+ }

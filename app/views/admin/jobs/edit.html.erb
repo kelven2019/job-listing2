@@ -1,11 +1,25 @@
-<h1>编辑职位</h1>
-<hr>
-<%= simple_form_for [:admin, @job] do |f| %>
-<%= f.input :title, :label => "职位" %>
-<%= f.input :description, :label => "简介" %>
-<%= f.input :wage_upper_bound, :label => "薪资上限" %>
-<%= f.input :wage_lower_bound, label: "薪资下限" %>
-<%= f.input :contact_email, label: "联系邮箱" %>
-<%= f.input :is_hidden %>
-<%= f.submit "提交" %>
-<% end %>
+<div class="form-box">
+  <h1> 编辑职位</h1>
+  <hr>
+  <%= simple_form_for [:admin, @job] do |f| %>
+  <div class="form-group">
+    <%= f.input :title, :label => "职位", input_html: { class: "form-control"}, placeholder: "IT工程师 或者 产品经理..." %>
+    <%= f.input :category_name, :label => "职位类型", :collection => ["IT工程师", "产品经理", "设计师", "广告创意", "市场与销售", "生成制造", "金融", "其他"], as: :radio_buttons, :checked => @job.category_name %>
+    <%= f.input :description, :label => "简介", input_html: { class: "form-control"} %>
+    <%= f.input :wage_lower_bound, :label => '薪水' do %>
+         <%= f.input_field :wage_lower_bound, :as => :string, placeholder: '下限' %>
+         <%= f.input_field :wage_upper_bound, :as => :string, placeholder: '上限' %>
+    <% end %>
+    <%= f.input :contact_email, label: "联系邮箱", input_html: { class: "form-control"} %>
+    <%= f.input :location, :label => "地点", input_html: { class: "form-control"}, placeholder: "北京/上海/广州/深圳..."%>
+
+    <%= f.input :company_name, :label => "公司名称", input_html: { class: "form-control"} %>
+
+    <%= f.input :company_url, :label => "公司网站", input_html: { class: "form-control"}, placeholder: "公司的官方网站" %>
+
+    <%= f.input :is_hidden, label: "隐藏" %>
+  </div>
+
+    <%= f.submit "提交", class: "btn btn-primary", data: { disable_with: "Submitting..." } %>
+  <% end %>
+</div>
