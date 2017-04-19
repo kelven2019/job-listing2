@@ -10,7 +10,6 @@
         <th>职位</th>
         <th>工作种类</th>
         <th>投递简历数</th>
-        <th>简介</th>
         <th>工资</th>
         <th>公司名称</th>
         <th>工作地点</th>
@@ -27,7 +26,6 @@
             <%= link_to(job.title, admin_job_path(job))%></td>
           <td><%= link_to(job.category_name, '/jobs/search?utf8=✓&q=' + job.category_name) %> </td>
           <td><%= link_to(job.resumes.count, admin_job_resumes_path(job)) %>
-          <td><%= job.description %></td>
           <td><span class="label label-default"><%= job.wage_lower_bound %> - <%= job.wage_upper_bound %></span> </td>
           <td><%= link_to(job.company_name, '/jobs/search?utf8=✓&q=' + job.company_name) %></td>
           <td><span class="fa fa-map-marker"></span> <%= job.location %> </td>

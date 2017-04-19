@@ -116,6 +116,7 @@ section {
   top: 0;
   left: 10px;
   margin-bottom: 0;//底部 margin 不撑开距离
+  margin-left: -15px;
   transition: background-color .6s;
   &.black {
     color: $nav-color-gray;
@@ -532,7 +533,7 @@ section {
 }
 
 .footer {
-  
+
   background: #1a191a;
   padding: 16px 10px 6px;
   text-align: center;
