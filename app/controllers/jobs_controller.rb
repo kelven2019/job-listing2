@@ -1,5 +1,5 @@
 class JobsController < ApplicationController
-  before_action :authenticate_user! , only: [:new, :create, :show]
+  before_action :authenticate_user! , only: [:new, :create]
   before_action :validate_search_key, only: [:search]
   def index
     @jobs = case params[:order]
@@ -22,11 +22,10 @@ class JobsController < ApplicationController
   def search
     if @query_string.present?
       search_result = Job.publish.ransack(@search_criteria).result(:distinct => true)
-      @jobs = search_result.paginate(:page => params[:page], :per_page => 20 )
-      puts @jobs
+      @jobs = search_result.paginate(:page => params[:page], :per_page => 5 )
     else
-      @jobs = Job.publish.recent.paginate(:page => params[:page], :per_page => 15)
-      puts @jobs
+      flash[:alert] = "没有搜索到相关职位"
+      @jobs = Job.publish.recent.paginate(:page => params[:page], :per_page => 5)
     end
   end
 
@@ -43,6 +42,6 @@ class JobsController < ApplicationController
   end
 
   def search_criteria(query_string)
-    { :title_or_category_name_company_name_cont => query_string }
+    { :title_or_description_or_category_name_or_company_name_or_location_cont => query_string }
   end
 end
