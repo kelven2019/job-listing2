@@ -6,4 +6,6 @@ class ApplicationController < ActionController::Base
       redirect_to jobs_path, alert: "你不是公司HR，没有权限进行相关操作"
     end
   end
+
+
 end
