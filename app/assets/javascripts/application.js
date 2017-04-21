@@ -14,9 +14,11 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap/alert
+//= require bootstrap-sprockets
 //= require bootstrap/dropdown
 //= require bootstrap/collapse
 //= require_tree .
+
 $(document).on('click', '.working', function () {
 	alert('功能暂未完成，敬请期待...')
 	// return false
