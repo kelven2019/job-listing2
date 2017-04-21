@@ -28,7 +28,7 @@
           <td><%= link_to(job.resumes.count, admin_job_resumes_path(job)) %>
           <td><span class="label label-default"><%= job.wage_lower_bound %> ~ <%= job.wage_upper_bound %></span> </td>
           <td><%= link_to(job.company_name, '/jobs/search?utf8=✓&q=' + job.company_name) %></td>
-          <td><span class="fa fa-map-marker"></span> <%= job.location %> </td>
+          <td><span class="fa fa-map-marker"></span> <%= link_to(job.location, '/jobs/search?utf8=✓&q=' + job.location)%> </td>
           <td><%= job.created_at %></td>
           <td>
               <%= link_to("编辑", edit_admin_job_path(job), class: "btn btn-xs btn-info")%>|

@@ -13,14 +13,16 @@ class ResumesController < ApplicationController
     @resume.job = @job
     if !current_user.is_applier_of?(@job)
       current_user.apply!(@job)
+      if @resume.save
+        redirect_to job_path(@job), notice: "你已成功投递简历"
+      else
+        render :new
+      end
     else
-      flash[:warning] = "你已经申请过该职位"
+      flash[:warning] = "你已经申请过该职位，不能重复投递简历至同一个职位"
+      redirect_to job_path(@job)
     end
-    if @resume.save
-      redirect_to job_path(@job), notice: "你已成功投递简历"
-    else
-      render :new
-    end
+
   end
 
   private

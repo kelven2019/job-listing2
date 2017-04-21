@@ -17,15 +17,20 @@ class JobsController < ApplicationController
     if @job.is_hidden
         redirect_to root_path, alert: "你没有查看该职位的权限"
     end
+
   end
 
   def search
     if @query_string.present?
       search_result = Job.publish.ransack(@search_criteria).result(:distinct => true)
       @jobs = search_result.paginate(:page => params[:page], :per_page => 5 )
-    else
+    elsif @query_string.blank?
+      flash[:alert] = "搜索关键词不能为空"
+      @jobs = Job.publish.recent.paginate(:page => params[:page], :per_page => 5)
+    elsif !@query_string.present?
       flash[:alert] = "没有搜索到相关职位"
       @jobs = Job.publish.recent.paginate(:page => params[:page], :per_page => 5)
+    else
     end
   end
 

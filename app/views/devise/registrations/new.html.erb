@@ -17,9 +17,10 @@
 
               <div class="form-inputs">
                 <%= f.input :email, label: "电子邮箱", required: true, autofocus: true, presence: "请输入电子邮箱地址", placeholder: "请输入电子邮箱地址" %>
+                <%= f.input :username, label: "用户名", placeholder: "请输入你的id", required: true %>
                 <%= f.input :password, label: "密码", required: true, placeholder: "密码，6-16位数字或字母", hint: ("最小6位密码" if @minimum_password_length) %>
                 <%= f.input :password_confirmation, label: "再次确认密码", required: true, placeholder: "再次输入密码" %>
-                <%= f.input :is_admin, label: "如果要注册为企业用户，请勾选"%>
+                <%= f.input :is_admin, label: "注册类型", as: :radio_buttons, collection: [['个人用户', false], ['企业用户', true]], required: true %>
               </div>
 
               <div class="form-actions">
