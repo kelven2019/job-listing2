@@ -1,7 +1,20 @@
+<div class="col-md-12 show">
+
+  <%= link_to(jobs_path, class: "btn btn-default back-btn") do  %>
+    <span class="fa fa-arrow-left" style="margin-right: 10px;"></span>返回工作列表
+  <% end %>
 <h1>投递简历至 <%= @job.title %></h1>
+<h2 class="company_name"> <%= link_to(@job.company_name, '/jobs/search?utf8=✓&q=' + @job.company_name) %></h2>
 <hr>
+<p class="info">
+    <span class="salary"> <span class="label label-default"><%= @job.wage_lower_bound %></span> ~ <span class="label label-default"><%= @job.wage_upper_bound %></span> </span>
+    <span>/</span>
+    <span><span class="fa fa-map-marker"></span><%= @job.location %></span>
+    <span>/</span>
+    <span><span class="fa fa-calendar"></span><%= @job.created_at %> 发布</span>
+</p>
 <%= simple_form_for [@job, @resume] do |f| %>
-<%= f.input :content, label: "简介"%>
+<%= f.input :content, placeholder: "简介", label: "简介"%>
 <%= f.input :attachment, label: "简历附件" %>
 <%= f.submit "提交"%>
 <% end %>

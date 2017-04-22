@@ -4,7 +4,8 @@
     <span class="fa fa-arrow-left" style="margin-right: 10px;"></span>返回工作列表
   <% end %>
     <h1><%= @job.title%> </h1>
-    <p class="company_name"><%= link_to(@job.company_name, '/jobs/search?utf8=✓&q=' + @job.company_name) %></p>
+    <h2 class="company_name"> <%= link_to(@job.company_name, '/jobs/search?utf8=✓&q=' + @job.company_name) %></h2>
+
     <div class="pull-right">
       <% if current_user && current_user.is_applier_of?(@job) %>
         <label class="label label-success label-lg">已申请</label>

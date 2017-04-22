@@ -12,8 +12,8 @@ class ResumesController < ApplicationController
     @resume.user = current_user
     @resume.job = @job
     if !current_user.is_applier_of?(@job)
-      current_user.apply!(@job)
       if @resume.save
+        current_user.apply!(@job)
         redirect_to job_path(@job), notice: "你已成功投递简历"
       else
         render :new
