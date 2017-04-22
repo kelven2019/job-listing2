@@ -1,5 +1,5 @@
 class JobsController < ApplicationController
-  before_action :authenticate_user! , only: [:new, :create]
+  before_action :authenticate_user! , only: [:new, :create, :show]
   before_action :validate_search_key, only: [:search]
   def index
     @jobs = case params[:order]
