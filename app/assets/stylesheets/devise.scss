@@ -6,24 +6,23 @@ $btn-background-hover: #00DBE9;
   width: 430px;
   // margin: 0 auto;
   background: #fff;
-  border-top: 1px solid #F0F0F0;
   padding-top: 20px;
-  padding-bottom: 20px;
+  padding-bottom: 5px;
   background-color: #fff;
-  box-shadow: 1px 2px 4px 0 rgba(0,0,0,0.25);
+  box-shadow: 1px 2px 4px 0 #146eb4;
   letter-spacing: 0;
   // margin-top: 20px;
   // margin-bottom: 20px;
   position: absolute;
-  top: 50%;
+  top: 20%;
   left: 50%;
   z-index: 3;
   margin-left: -215px;
-  margin-top: 200px;
-  border: 5px solid #696767;
+  margin-top: 150px;
+  border: 5px solid #146eb4;
   border-radius: 20px;
   a {
-    color: #666666;
+    color: #146eb4;
     font-weight: 400;
     text-decoration: none;
   }
@@ -34,11 +33,6 @@ $btn-background-hover: #00DBE9;
     text-align: center;
     font-size: 1.5em;
     margin-bottom: 20px;
-    img {
-      width: 36px;
-      margin-top: -5px;
-      margin-right: 7px;
-    }
   }
   .left-part {
     display: none;
@@ -49,7 +43,7 @@ $btn-background-hover: #00DBE9;
     margin: 0 auto;
   }
   .left-part {
-    border-right: 1px solid #d7d7d7;
+    border-right: 1px solid #146eb4;
   }
   .introduce {
     .item {
@@ -88,7 +82,7 @@ $btn-background-hover: #00DBE9;
     width: 315px;
     margin: 0 auto;
     .registration-btn {
-      background: $btn-background;
+      background: #146eb4;
       border-radius: 6px;
       width: 100%;
       color: white;
@@ -112,7 +106,7 @@ $btn-background-hover: #00DBE9;
       margin-top: 20px;
       text-align: center;
       a {
-        color: #4783ED;
+        color: #146eb4;
         font-weight: 100;
         font-size: 1em;
       }
@@ -161,16 +155,7 @@ $btn-background-hover: #00DBE9;
   z-index: 1;
   overflow: hidden;
   height: 853px;
-  .image-content {
-    height: 853px;
-  }
-  img {
-    width: 100%;
-    height: 853px;
-    display: block;
-    position: relative;
-    z-index: 2;
-  }
+
   &::before {
     content: "";
     width: 100%;
