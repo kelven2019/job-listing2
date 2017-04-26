@@ -21,16 +21,17 @@ class JobsController < ApplicationController
   end
 
   def search
-    if @query_string.present?
-      search_result = Job.publish.ransack(@search_criteria).result(:distinct => true)
-      @jobs = search_result.paginate(:page => params[:page], :per_page => 5 )
-    elsif @query_string.blank?
+    if @query_string.blank?
       flash[:alert] = "搜索关键词不能为空"
       @jobs = Job.publish.recent.paginate(:page => params[:page], :per_page => 5)
-    elsif !@query_string.present?
-      flash[:alert] = "没有搜索到相关职位"
-      @jobs = Job.publish.recent.paginate(:page => params[:page], :per_page => 5)
     else
+      search_result = Job.publish.ransack(@search_criteria).result(:distinct => true)
+        if search_result.present?
+          @jobs = search_result.paginate(:page => params[:page], :per_page => 5 )
+        else
+          flash[:alert] = "没有搜索到相关职位，请输入其他关键词或者查看以下职位"
+          @jobs = Job.publish.recent.paginate(:page => params[:page], :per_page => 5)
+        end
     end
   end
 
