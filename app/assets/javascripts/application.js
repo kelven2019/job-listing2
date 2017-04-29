@@ -25,10 +25,10 @@ $(document).on('click', '.working', function () {
 }).on('click', '.backtop', function () {
 	$('body').animate({'scrollTop': 0}, 500)
 }).on('mouseenter', '.support', function () {
-	$('.ewm').show().stop().animate({left: '-136px', opacity: 1}, 500)
+	$('.ewm').show().stop().animate({right: '-150px', opacity: 1}, 500)
 }).on('mouseleave', '.support', function () {
 	$('.ewm').stop().animate({opacity: 0}, 500, function () {
-		$(this).css('left', 0).hide()
+		$(this).css('right', 0).hide()
 	})
 })
 
