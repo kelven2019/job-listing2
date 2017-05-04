@@ -32,15 +32,29 @@ $banner: url(https://static.pexels.com/photos/6471/woman-hand-smartphone-desk.jp
  @import "bootstrap";
  @import "font-awesome-sprockets";
  @import "font-awesome";
+
+ //html
+ html {
+   position: relative;
+   min-height: 100%;
+ }
+
  // body
 body {
   font-family: Hiragino Sans GB,Lantinghei SC,Open Sans,Arial,Microsoft YaHei,sans-serif;
+  margin-bottom: 100px;
+  padding-top: 65px;
 }
 
 .body1 {
   margin-top: 80px;
-  margin-bottom: 0;
+  margin-bottom: 100px;
 }
+// .body2 {
+//   font-family: Hiragino Sans GB,Lantinghei SC,Open Sans,Arial,Microsoft YaHei,sans-serif;
+//   padding-top: 0px;
+//   margin-bottom: 100px;
+// }
 
 .container-fluid {
   .about {
@@ -63,7 +77,7 @@ body {
             padding: 0 7px;
         }
       @media screen and (max-width: 768px) {
-        .col-md-4 {
+        .col-md-4 .col-xs-4 {
             text-align: center;
             margin: 25px 0;
         }
@@ -162,7 +176,7 @@ section {
   letter-spacing: 4px;
 }
 .navbar-default {
-  width: 102%;
+  width: 101%;
   position: fixed;
   z-index: 10;
   top: 0;
@@ -228,69 +242,6 @@ section {
   }
 }
 
-//banner
-
-.container-fluid {
-  .jumbotron {
-    padding-bottom: 110px;//内部的底部边距，这样按钮不会很靠近底部了
-    margin: 0 -15px 0px;//顶部margin为0，因此可以直接接着导航栏；左右margin为负15，因此可以顶到浏览器的边缘（抵消 container-fluid 的 15px 左右padding);底部margin为20，会跟下面的内容撑开距离
-    border-radius: 0;//圆角为0
-    padding-top: 0;
-  }
-}
-.jumbotron {
-  background-image: $banner;
-  background-repeat: no-repeat;
-  background-size: cover;
-  padding-bottom: 110px;
-  background-position: center -38px;
-  margin: 0 -15px 0;//顶部margin为0，因此可以直接接着导航栏；左右margin为负15，因此可以顶到浏览器的边缘（抵消 container-fluid 的 15px 左右padding);底部margin为20，会跟下面的内容撑开距离
-  color: $banner-color;
-  position: relative;
-  height: 770px;
-  letter-spacing: 2px;
-  // filter: blur(.5px);
-  &::before {
-    content: "";
-    width: 100%;
-    height: 100%;
-    background-color: transparentize(#000, .55);
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-  .text-content {
-    position: absolute;
-    z-index: 2;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-  .title {
-    text-align: center;//文字左对齐
-    padding: 50px 20px 0;//上50px，左右20px，下0
-    font-size: 50px;
-    font-family: "Helvetica Neue", "Microsoft Yahei", 微软雅黑;
-    text-align: center;
-    padding-top: 268px;
-  }
-  .slogan {
-    width: 600px;
-    margin: 44px auto 0;
-    font-size: 22px;
-    line-height: 26px;
-    text-align: center;
-  }
-  .lead {
-    margin-top: 40px;
-    margin-bottom: 230px;
-    color: white;
-    .b-btn {
-      padding: 10px 20px;
-    }
-  }
-}
 // hotjobs
 .hot-jobs-category {
   position: relative;
@@ -547,12 +498,17 @@ section {
 // }
 //
 .footer {
-
+  position: absolute;
+  bottom: 0;
+  width: 102%;
   background: #333333;
   padding: 16px 10px 6px;
   text-align: center;
   font-size: 12px;
+  height: 100px;
   color: #C2C2C2;
+  margin-left: -15px;
+  margin-right: -15px;
   span {
     display: inline-block;
     margin-right: 10px;
