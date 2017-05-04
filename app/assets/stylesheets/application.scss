@@ -16,11 +16,11 @@
  */
 
 
-$nav-color-gray: #A6A6A6;
-$nav-color-white: #fff;
-$nav-color-black: #A6A6A6;
-$nav-background-black: #323436;
-$nav-a-hover: #353637;
+// $nav-color-gray: #A6A6A6;
+// $nav-color-white: #fff;
+// $nav-color-black: #A6A6A6;
+// $nav-background-black: #323436;
+// $nav-a-hover: #353637;
 $banner-color: #fff;
 $btn-color: #fff;
 $btn-background: #49BCB5;
@@ -162,12 +162,11 @@ section {
   letter-spacing: 4px;
 }
 .navbar-default {
-  width: 100%;
+  width: 102%;
   position: fixed;
   z-index: 10;
   top: 0;
   left: 10px;
-  margin-bottom: 0;//底部 margin 不撑开距离
   margin: 0 150px 0 -15px;
   transition: background-color .6s;
   &.black {

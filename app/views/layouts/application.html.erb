@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>新时代招聘网</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -16,13 +17,13 @@
         <%= render "common/navbar" %>
         <div>
           <% if current_page?('/') %>
-            <div>
           <% else %>
             <div class="container-fluid wrapper-container container">
             <%= render "common/flashes" %>
+            </div>
           <% end %>
-
-            <%= yield %>
+          <%= yield %>
+        </div>
       </div>
     </div>
       <%= render "common/footer" %>
