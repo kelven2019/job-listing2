@@ -63,7 +63,10 @@ body {
     letter-spacing: 1px;
        .logo {
         color: #146eb4;
+        display: inline !important;
         font-size: 200px;
+        min-width: 260px;
+        // position: absolute;
       }
 
       h2 {
@@ -76,10 +79,10 @@ body {
             line-height: 34px;
             padding: 0 7px;
         }
-      @media screen and (max-width: 768px) {
-        .col-md-4 .col-xs-4 {
+      @media screen and (min-width: 400px) {
+        .col-sm-8  {
             text-align: center;
-            margin: 25px 0;
+        //     margin: 25px 0;
         }
       }
   }
@@ -352,16 +355,16 @@ section {
     }
    }
     .hjc-ul {
-      margin: 50px auto 0;
+      margin: 5px auto 0;
       overflow: hidden;
       padding: 0 20px 0;
       text-align: center;
-      height: 200px;
-      width: 1024px;
+      // height: auto;
+      width: 100%;
       .thumbnail {
           padding: 0 0 15px 0;
-          width: 220px;
-          height: 150px;
+          width: 100%;
+          height: auto;
           margin-left: 10px;
           margin-right: 10px;
           border: none;
@@ -391,6 +394,47 @@ section {
                border: 1px solid #146eb4;
              }
         }
+      }
+        .hjc-ul1 {
+          margin: 50px auto 5px auto;
+          overflow: hidden;
+          padding: 0 20px 0;
+          text-align: center;
+          // height: auto;
+          width: 100%;
+          .thumbnail {
+              padding: 0 0 15px 0;
+              width: 100%;
+              height: auto;
+              margin-left: 10px;
+              margin-right: 10px;
+              border: none;
+              border-radius: 0;
+              position: relative;
+              overflow: hidden;
+               img {
+                 width: 100%;
+                 height: auto;
+               }
+               .title {
+                  position: absolute;
+                  bottom: 0;
+                  left: 0;
+                  width: 100%;
+                  background: #146eb4;
+                  font-size: 16px;
+                  padding: 6px 25px;
+                  color: #fff;
+                  transition: opacity .4s ease-in-out;
+                }
+                &:hover {
+                   transform: scale(1.2);
+                   -webkit-transform: scale(1.2);
+                   -webkit-transition: all .8s;
+                   transition: all .8s;
+                   border: 1px solid #146eb4;
+                 }
+            }
     }
 }
 
