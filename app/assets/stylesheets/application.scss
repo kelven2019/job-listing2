@@ -232,7 +232,26 @@ body {
     }
   }
 }
-
+// 工作show页面
+.show {
+  width: 100%;
+  // background-color: #ebf0ef;
+  .show_title {
+    min-width: 1024px;
+    width: 100%;
+    padding: 30px 0 11px;
+    // margin: 0 auto 20px;
+  }
+  .apply_status {
+    float: left;
+    position: relative;
+    .label {
+      background-color: #146eb4;
+      size: 100px;
+      margin: 400px 10px;
+    }
+  }
+}
 // section-title
 #services {
   text-align: center;

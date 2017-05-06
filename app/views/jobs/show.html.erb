@@ -1,32 +1,42 @@
-<div class="col-md-12 show">
 
-  <%= link_to(jobs_path, class: "btn btn-default back-btn") do  %>
-    <span class="fa fa-arrow-left" style="margin-right: 10px;"></span>返回工作列表
-  <% end %>
-    <h1><%= @job.title%> </h1>
-    <h2 class="company_name"> <%= link_to(@job.company_name, '/jobs/search?utf8=✓&q=' + @job.company_name) %></h2>
-
-    <div class="pull-right">
-      <% if current_user && current_user.is_applier_of?(@job) %>
-        <label class="label label-success label-lg">已申请</label>
-      <% else %>
-        <% if !current_user.is_admin %>
-          <%= link_to("申请职位", new_job_resume_path(@job), class: "btn btn-lg btn-primary")%>
-          <label class="label label-warning ">还未申请该职位</label>
-        <% end %>
-      <% end %>
-      <br>
+<div class="show">
+  <div class="col-md-10 col-md-offset-1">
+    <%= link_to(jobs_path, class: "btn btn-default back-btn") do  %>
+      <span class="fa fa-arrow-left" style="margin-right: 10px;"></span>返回工作列表
+    <% end %>
+    <div class="row show_title">
+      <div class="col-md-6 col-xs-12">
+          <h1><%= @job.title%> </h1>
+          <h2 class="company_name"> <%= link_to(@job.company_name, '/jobs/search?utf8=✓&q=' + @job.company_name) %></h2>
+          <p class="info">
+              <span class="salary"> <span class="label label-default"><%= @job.wage_lower_bound %></span> ~ <span class="label label-default"><%= @job.wage_upper_bound %></span> </span>
+              <span>/</span>
+              <span><span class="fa fa-map-marker"></span><%= @job.location %></span>
+              <span>/</span>
+              <span><span class="fa fa-calendar"></span><%= @job.created_at %> 发布</span>
+          </p>
+      </div>
+      <div class="col-md-6 col-xs-12">
+        <div class="apply_status">
+          <% if current_user && current_user.is_applier_of?(@job) %>
+            <label class="label">已申请</label>
+          <% else %>
+            <% if !current_user.is_admin %>
+              <%= link_to("申请职位", new_job_resume_path(@job), class: "btn btn-lg btn-primary")%>
+              <label class="label label-warning ">还未申请该职位</label>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
     </div>
+  </div>
+</div>
 
-    <p class="info">
-        <span class="salary"> <span class="label label-default"><%= @job.wage_lower_bound %></span> ~ <span class="label label-default"><%= @job.wage_upper_bound %></span> </span>
-        <span>/</span>
-        <span><span class="fa fa-map-marker"></span><%= @job.location %></span>
-        <span>/</span>
-        <span><span class="fa fa-calendar"></span><%= @job.created_at %> 发布</span>
-    </p>
+<div class="col-md-10 col-md-offset-1 show_description">
+  <div clss="row">
     <p class="description-title"><strong>职位详情：</strong></p>
     <p class="description">
       <%= render_job_description(@job) %>
     </p>
+  </div>
 </div>
