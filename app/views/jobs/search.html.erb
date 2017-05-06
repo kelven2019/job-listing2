@@ -1,38 +1,68 @@
-<div>
-  <table class="table table-hover table-boldered table-striped custab">
-    <thead>
-      <tr>
-        <th>职位</th>
-        <th>工作种类</th>
-        <th>工资</th>
-        <th>公司名称</th>
-        <th>工作地点</th>
-        <th>发布时间</th>
+<div class="col-md-10 col-md-offset-1 job-content">
+<!-- 工作列表 -->
+  <div class="row">
+    <% if @jobs.length > 0 %>
+      <% @jobs.each do |job| %>
+      <div class="col-md-9 col-xs-12 job-box">
+        <div class="col-md-6 col-xs-12 info">
+          <div class="info-top">
+            <h3><%= link_to(job.title, job_path(job))%><span class="fa fa-calendar"></span><span><%= job.created_at.strftime("%Y-%m-%d") %></span>
+          </div>
+          <div class="info-mid">
+            <%= job.wage_lower_bound %> ~ <%= job.wage_upper_bound %>
+          </div>
+          <div class="info-bot">
+            <%= link_to(job.category_name, '/jobs/search?utf8=✓&q=' + job.category_name, class: "btn btn-sm btn-default") %>
+          </div>
+        </div>
 
+        <!-- 公司信息 -->
+        <div class="col-md-6 col-xs-12 company">
+          <div class="company-top">
+            <span><%= link_to(job.company_name, job_path(job))%></span>
+          </div>
+          <div class="company-mid">
+            <span class="fa fa-envelope"></span><span><%= job.contact_email %></span>
+          </div>
+          <div class="company-bot">
+            <span class="fa fa-map-marker"></span><span><%= job.location %></span>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    <% else %>
+    <!-- 没有相关职位 -->
+      <div class="col-md-9 col-xs-12 no-job-data">
+        <h2>没有相关职位，请查看推荐职位</h2>
+      </div>
+    <% end %>
 
-        <% if !current_user || !current_user.is_admin? %>
-        <th>申请职位</th>
-        <% end %>
-      </tr>
-    </thead>
-      <tbody>
-        <% @jobs.each do |job| %>
-          <tr>
-            <td><%= link_to(job.title, job_path(job)) %></td>
-            <td><%= link_to(job.category_name, '/jobs/search?utf8=✓&q=' + job.category_name) %></td>
-            <td><span class="label label-default"><%= job.wage_lower_bound %> ~ <%= job.wage_upper_bound %></span></td>
-            <td><%= link_to(job.company_name, '/jobs/search?utf8=✓&q=' + job.company_name) %></td>
-            <td><span class="fa fa-map-marker"></span> <%= link_to(job.location, '/jobs/search?utf8=✓&q=' + job.location)%></td>
-            <td><%= job.created_at %></td>
-            <% if !current_user || !current_user.is_admin? %>
-              <td><%= link_to("申请职位", new_job_resume_path(job), class: "btn btn-primary btn-sm")%></td>
-            <% end %>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-    <div class="text-center">
-      <%= will_paginate(@jobs, renderer: BootstrapPagination::Rails) %>
+    <!-- 职位推荐 -->
+    <div class="col-md-3 side-box">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-md-12 suggest-header">
+              <h4 class="text-center">推荐职位<h4>
+            </div>
+            <div class="row">
+              <% @suggests.each do |job| %>
+              <div class="col-xs-10 col-xs-offset-1 suggest-content">
+                <div>
+                  <h3>
+                    <%= link_to job_path(job), target: "_blank" do %>
+                      <%= job.title %> [<%= job.location %>]
+                    <% end %>
+                  </h3>
+                </div>
+                <div><p><%= job.wage_lower_bound %>  ~ <%= job.wage_upper_bound %> </p></div>
+                <div><span><%= job.company_name %></span></div>
+              </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-
+  </div>
 </div>

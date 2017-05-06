@@ -2,6 +2,7 @@ class JobsController < ApplicationController
   before_action :authenticate_user! , only: [:new, :create, :show]
   before_action :validate_search_key, only: [:search]
   def index
+    @suggests = Job.publish.random5
     @jobs = case params[:order]
       when 'by_upper_bound'
         Job.publish.order('wage_upper_bound DESC').paginate(:page => params[:page], :per_page => 10)
@@ -24,13 +25,16 @@ class JobsController < ApplicationController
     if @query_string.blank?
       flash[:alert] = "搜索关键词不能为空"
       @jobs = Job.publish.recent.paginate(:page => params[:page], :per_page => 5)
+      @suggests = Job.publish.random5
     else
       search_result = Job.publish.ransack(@search_criteria).result(:distinct => true)
         if search_result.present?
           @jobs = search_result.paginate(:page => params[:page], :per_page => 5 )
+          @suggests = Job.publish.random5
         else
           flash[:alert] = "没有搜索到相关职位，请输入其他关键词或者查看以下职位"
           @jobs = Job.publish.recent.paginate(:page => params[:page], :per_page => 5)
+          @suggests = Job.publish.random5
         end
     end
   end

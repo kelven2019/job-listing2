@@ -130,6 +130,106 @@ body {
   transition: 0.5s;
 }
 
+// 工作列表
+.job-box{
+  border: 1.5px solid #146eb4;
+  box-shadow: 1px 1px 5px #ccc;
+  margin-top: 12.5px;
+  padding: 15px 1px 1px 1px;
+  background-color: #fff;
+  // color: #555;
+  font-size: 16px;
+  // font-family: Hiragino Sans GB,Lantinghei SC,Open Sans,Arial,Microsoft YaHei,sans-serif;
+
+  div{
+    margin-bottom: 5px;
+  }
+
+  .info{
+      display: inline;
+      float: left;
+      min-width: 65%;
+  }
+
+  .info-top{
+    h3{
+      display: inline;
+      font-size: 20px;
+    }
+    span{
+      margin-left: 10px;
+      display: inline;
+      color: #888;
+      font-size: 12px;
+    }
+  }
+
+  .info-mid{
+    color: #146eb4;
+    letter-spacing: -1px;
+  }
+
+  .info-bot{
+      padding: 5px 7.5px 5px 7.5px;
+      font-size: 12px;
+  }
+
+  .company{
+    float: left;
+    display: inline;
+    max-width: 35%;
+
+    span{
+      width: 20px;
+      margin-left: 5px;
+    }
+  }
+
+  .company-top{
+    // color: #146eb4;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+    margin-left: -5px;
+  }
+
+  .company-bot{
+    margin-left: 3.5px;
+    letter-spacing: 1px;
+  }
+}
+  .side-box{
+    display: inline;
+    position: absolute;
+    margin-top: 115px;
+    margin-left: 35px;
+    padding-bottom: 12.5px;
+    min-width: 260px;
+    background-color: #fff;
+    color: #555;
+    // border: 1.5px solid #146eb4;
+  .suggest-content{
+    background-color: #fff;
+    padding: 7.5px;
+    border: 0.5px solid #146eb4;
+    h3{
+      margin-top: 1px;
+      font-size: 16px;
+    }
+
+    p{
+      font-size: 16px;
+      color: #146eb4;
+      letter-spacing: -1px;
+    }
+
+    span{
+      color: #aaa;
+      font-size: 14px;
+      letter-spacing: 0.5px;
+    }
+  }
+}
+
 // section-title
 #services {
   text-align: center;
@@ -236,7 +336,7 @@ section {
   }
  }
 }
-@media (min-width: 768px) {
+@media (max-width: 768px) {
   .navbar {
     border-radius: 0;//圆角为0
   }
