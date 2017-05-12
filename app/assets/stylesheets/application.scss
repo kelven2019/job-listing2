@@ -235,7 +235,7 @@ body {
 // 工作show页面
 .show {
   width: 100%;
-  // background-color: #ebf0ef;
+  background-color: #ebf0ef;
   .show_title {
     min-width: 1024px;
     width: 100%;
@@ -245,6 +245,8 @@ body {
   .apply_status {
     float: left;
     position: relative;
+    height: 50px;
+    line-height: 50px;
     .label {
       background-color: #146eb4;
       size: 100px;
@@ -390,6 +392,7 @@ section {
           border-radius: 0;
           position: relative;
           overflow: hidden;
+          max-width: 250px;
            img {
              width: 100%;
              height: auto;
@@ -431,6 +434,7 @@ section {
               border-radius: 0;
               position: relative;
               overflow: hidden;
+              max-width: 250px;
                img {
                  width: 100%;
                  height: auto;
@@ -455,6 +459,11 @@ section {
                  }
             }
     }
+    // @media (max-width: 768px) {
+    //   .hot-jobs-category {
+    //     width: 80%
+    //   }
+    // }
 }
 
 

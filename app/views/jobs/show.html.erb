@@ -1,10 +1,10 @@
 
 <div class="show">
-  <div class="col-md-10 col-md-offset-1">
+  <div class="col-md-10 col-md-offset-1 show_title">
     <%= link_to(jobs_path, class: "btn btn-default back-btn") do  %>
       <span class="fa fa-arrow-left" style="margin-right: 10px;"></span>返回工作列表
     <% end %>
-    <div class="row show_title">
+    <div class="row">
       <div class="col-md-6 col-xs-12">
           <h1><%= @job.title%> </h1>
           <h2 class="company_name"> <%= link_to(@job.company_name, '/jobs/search?utf8=✓&q=' + @job.company_name) %></h2>
@@ -30,7 +30,7 @@
       </div>
     </div>
   </div>
-</div>
+
 
 <div class="col-md-10 col-md-offset-1 show_description">
   <div clss="row">
@@ -39,4 +39,5 @@
       <%= render_job_description(@job) %>
     </p>
   </div>
+</div>
 </div>
