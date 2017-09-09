@@ -5,10 +5,10 @@
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload', :async => true %>
   </head>
 
-  <body>
+  <body id="<%= "#{controller_name}-#{action_name}"%>">
     <div class="container-fluid">
       <div class="body1">
         <%= render "common/navbar" %>
